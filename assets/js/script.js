@@ -32,6 +32,8 @@ let currentPokemon = null;
 let score = 0;
 let round = 1;
 let answered = false;
+let nextRoundTimeout = null;
+let answered = false;
 
 const pokemonMode = document.getElementById("pokemonMode");
 
@@ -110,7 +112,7 @@ async function startGame() {
 
 async function loadPokemon() {
     stopRoundSounds();
-    
+
     answered = false;
 
     pokemonName.textContent = "Quem é esse Pokémon?";
@@ -225,6 +227,8 @@ function checkAnswer(isCorrect) {
     disableOptions();
 
     btnNext.classList.remove("hidden");
+
+    startNextRoundTimer();
 }
 
 function revealPokemon() {
@@ -280,6 +284,8 @@ function disableOptions() {
 }
 
 async function nextRound() {
+    clearTimeout(nextRoundTimeout);
+
     stopRoundSounds();
 
     round++;
@@ -415,4 +421,37 @@ function stopRoundSounds() {
 
     audioFundo.pause();
     audioFundo.currentTime = 0;
+}
+
+function startNextRoundTimer() {
+
+    clearTimeout(nextRoundTimeout);
+
+    let countdown = 5;
+
+    btnNext.textContent =
+        `Próximo Pokémon (${countdown})`;
+
+    const interval = setInterval(() => {
+
+        countdown--;
+
+        if (countdown > 0) {
+
+            btnNext.textContent =
+                `Próximo Pokémon (${countdown})`;
+
+        } else {
+
+            clearInterval(interval);
+
+        }
+
+    }, 1000);
+
+    nextRoundTimeout = setTimeout(() => {
+
+        nextRound();
+
+    }, 5000);
 }
