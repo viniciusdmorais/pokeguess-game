@@ -127,6 +127,7 @@ GitHub Pages
 ```
 
 # 🧠 Conceitos utilizados
+```
 Consumo de API REST
 Manipulação de DOM
 Async/Await
@@ -137,7 +138,7 @@ Organização modular
 Game feedback
 Áudio no navegador
 Animações CSS
-
+```
 # 📦 Estrutura do projeto
 
 ```
@@ -176,12 +177,13 @@ estética anime/game
 
 # 📱 Responsividade
 O PokéGuess foi desenvolvido para:
+```
 💻 Desktop
 📱 Mobile
 📲 Tablets
-
+```
 # 🔥 Futuras melhorias
-
+```
 Sistema de ranking
 Banco de dados online
 Multiplayer
@@ -191,28 +193,31 @@ Pokémons shiny
 Voice effects
 PWA instalável
 Login de usuário
-
+```
 # ⚡ Performance
+```
 Projeto totalmente frontend
 Sem backend necessário
 Sem custos
 Hospedado gratuitamente
 Consumo leve da API
-
+```
 # 🌐 API utilizada
+```
 PokéAPI
 https://pokeapi.co/
+```
 
 # 👨‍💻 Autor
-
+```
 Vinicius Morais
-
+```
 <p align="center"> <a href="https://github.com/viniciusdmorais"> <img src="https://img.shields.io/badge/GitHub-121013?style=for-the-badge&logo=github&logoColor=white"> </a> <a href="https://www.linkedin.com/in/viniciusdemoraismendes"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"> </a> <a href="https://viniciusdmorais.github.io/Portifolio_2.0/"> <img src="https://img.shields.io/badge/PORTFÓLIO-00c3ff?style=for-the-badge"> </a> </p>
 
 # ⭐ Se curtiu o projeto
-
+```
 Deixe uma estrela no repositório 😄
-
+```
 <p align="center">
 ⚡ "Gotta Guess 'Em All!"
-</p> ```
+</p> 
