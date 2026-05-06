@@ -33,7 +33,7 @@ let score = 0;
 let round = 1;
 let answered = false;
 let nextRoundTimeout = null;
-let answered = false;
+let nextRoundInterval = null;
 
 const pokemonMode = document.getElementById("pokemonMode");
 
@@ -285,6 +285,7 @@ function disableOptions() {
 
 async function nextRound() {
     clearTimeout(nextRoundTimeout);
+    clearInterval(nextRoundInterval);
 
     stopRoundSounds();
 
@@ -426,32 +427,25 @@ function stopRoundSounds() {
 function startNextRoundTimer() {
 
     clearTimeout(nextRoundTimeout);
+    clearInterval(nextRoundInterval);
 
     let countdown = 5;
 
-    btnNext.textContent =
-        `Próximo Pokémon (${countdown})`;
+    btnNext.textContent = `Próximo Pokémon (${countdown})`;
 
-    const interval = setInterval(() => {
+    nextRoundInterval = setInterval(() => {
 
         countdown--;
 
         if (countdown > 0) {
-
-            btnNext.textContent =
-                `Próximo Pokémon (${countdown})`;
-
+            btnNext.textContent = `Próximo Pokémon (${countdown})`;
         } else {
-
-            clearInterval(interval);
-
+            clearInterval(nextRoundInterval);
         }
 
     }, 1000);
 
     nextRoundTimeout = setTimeout(() => {
-
         nextRound();
-
     }, 5000);
 }
