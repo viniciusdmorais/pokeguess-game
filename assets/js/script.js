@@ -33,7 +33,9 @@ let score = 0;
 let round = 1;
 let answered = false;
 
-const MAX_POKEMON_ID = 151;
+const pokemonMode = document.getElementById("pokemonMode");
+
+let maxPokemonId = 151;
 
 /* CONFIGURAÇÕES */
 
@@ -52,6 +54,20 @@ audioFundo.volume = 0.12;
 btnStart.addEventListener("click", startGame);
 btnAnswer.addEventListener("click", handleTextAnswer);
 btnNext.addEventListener("click", nextRound);
+
+pokemonMode.addEventListener("change", async () => {
+
+    maxPokemonId = Number(pokemonMode.value);
+
+    score = 0;
+    round = 1;
+
+    updateScore();
+    updateRound();
+
+    await loadPokemon();
+
+});
 
 answerInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -124,7 +140,7 @@ async function loadPokemon() {
     };
 
     try {
-        const randomId = Math.floor(Math.random() * MAX_POKEMON_ID) + 1;
+        const randomId = Math.floor(Math.random() * maxPokemonId) + 1;
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
 
         if (!response.ok) {
@@ -226,7 +242,7 @@ async function createOptions() {
     const options = [correctName];
 
     while (options.length < 4) {
-        const randomId = Math.floor(Math.random() * MAX_POKEMON_ID) + 1;
+        const randomId = Math.floor(Math.random() * maxPokemonId) + 1;
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
         const pokemon = await response.json();
 
