@@ -46,10 +46,10 @@ audioPergunta.volume = 0.45;
 
 audioAcerto.volume = 0.4;
 
-audioErro.volume = 0.2;
+audioErro.volume = 0.18;
 
 audioFundo.loop = false;
-audioFundo.volume = 0.2;
+audioFundo.volume = 0.06;
 
 btnStart.addEventListener("click", startGame);
 btnAnswer.addEventListener("click", handleTextAnswer);
@@ -109,6 +109,8 @@ async function startGame() {
 }
 
 async function loadPokemon() {
+    stopRoundSounds();
+    
     answered = false;
 
     pokemonName.textContent = "Quem é esse Pokémon?";
@@ -278,8 +280,11 @@ function disableOptions() {
 }
 
 async function nextRound() {
+    stopRoundSounds();
+
     round++;
     updateRound();
+
     await loadPokemon();
 }
 
@@ -397,3 +402,17 @@ btnSound.addEventListener("click", () => {
     btnSound.classList.add("active-sound");
 
 });
+
+function stopRoundSounds() {
+    audioPergunta.pause();
+    audioPergunta.currentTime = 0;
+
+    audioAcerto.pause();
+    audioAcerto.currentTime = 0;
+
+    audioErro.pause();
+    audioErro.currentTime = 0;
+
+    audioFundo.pause();
+    audioFundo.currentTime = 0;
+}
