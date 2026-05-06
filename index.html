@@ -1,92 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>PokéGuess | Quem é esse Pokémon?</title>
+    <title>PokéGuess | Quem é esse Pokémon?</title>
 
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/script.js" defer></script>
 </head>
+
 <body>
 
-  <main class="app">
+    <main class="app">
 
-    <section class="start-screen" id="startScreen">
-      <div class="logo-area">
-        <span class="badge">Pokédex Challenge</span>
-        <h1>PokéGuess</h1>
-        <p>Descubra quem é o Pokémon escondido na silhueta!</p>
-      </div>
+        <section class="start-screen" id="startScreen">
+            <div class="logo-area">
+                <span class="badge">Pokédex Challenge</span>
+                <h1>PokéGuess</h1>
+                <p>Descubra quem é o Pokémon escondido na silhueta!</p>
+            </div>
 
-      <button id="btnStart" class="btn primary">
-        Jogar agora
-      </button>
-    </section>
+            <button id="btnSound" class="btn sound-btn">
+                🔊 Ativar Som
+            </button>
 
-    <section class="game-screen hidden" id="gameScreen">
+            <button id="btnStart" class="btn primary">
+                Jogar agora
+            </button>
+        </section>
 
-      <header class="game-header">
-        <div>
-          <span class="small-label">Pontuação</span>
-          <strong id="score">0</strong>
-        </div>
+        <section class="game-screen hidden" id="gameScreen">
 
-        <div>
-          <span class="small-label">Rodada</span>
-          <strong id="round">1</strong>
-        </div>
-      </header>
+            <header class="game-header">
+                <div>
+                    <span class="small-label">Pontuação</span>
+                    <strong id="score">0</strong>
+                </div>
 
-      <section class="pokemon-card">
+                <div>
+                    <span class="small-label">Rodada</span>
+                    <strong id="round">1</strong>
+                </div>
+            </header>
 
-        <div class="scanner"></div>
+            <section class="pokemon-card">
 
-        <div class="pokemon-image-area">
-          <img 
-            id="pokemonImage" 
-            class="pokemon-img hidden-pokemon" 
-            src="" 
-            alt="Silhueta do Pokémon"
-          />
-        </div>
+                <div class="scanner"></div>
 
-        <h2 id="pokemonName">Quem é esse Pokémon?</h2>
+                <div class="pokemon-image-area">
+                    <img id="pokemonImage" class="pokemon-img hidden-pokemon" src="" alt="Silhueta do Pokémon" />
+                </div>
 
-        <p id="message" class="message">
-          Observe a silhueta e tente acertar!
-        </p>
+                <h2 id="pokemonName">Quem é esse Pokémon?</h2>
 
-        <label class="assist-toggle">
-          <input type="checkbox" id="assistMode" />
-          Ativar ajuda com múltipla escolha
-        </label>
+                <p id="message" class="message">
+                    Observe a silhueta e tente acertar!
+                </p>
 
-        <div class="answer-area" id="answerArea">
-          <input 
-            type="text" 
-            id="answerInput" 
-            placeholder="Digite o nome do Pokémon"
-            autocomplete="off"
-          />
+                <label class="assist-toggle">
+                    <input type="checkbox" id="assistMode" />
+                    Ativar ajuda com múltipla escolha
+                </label>
 
-          <button id="btnAnswer" class="btn secondary">
-            Responder
-          </button>
-        </div>
+                <div class="answer-area" id="answerArea">
+                    <input type="text" id="answerInput" placeholder="Digite o nome do Pokémon" autocomplete="off" />
 
-        <div class="options-grid hidden" id="optionsGrid"></div>
+                    <button id="btnAnswer" class="btn secondary">
+                        Responder
+                    </button>
+                </div>
 
-        <button id="btnNext" class="btn primary hidden">
-          Próximo Pokémon
-        </button>
+                <div class="options-grid hidden" id="optionsGrid"></div>
 
-      </section>
+                <button id="btnNext" class="btn primary hidden">
+                    Próximo Pokémon
+                </button>
 
-    </section>
+            </section>
 
-  </main>
+        </section>
+
+    </main>
 
 </body>
+
 </html>

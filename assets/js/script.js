@@ -17,12 +17,37 @@ const btnAnswer = document.getElementById("btnAnswer");
 const optionsGrid = document.getElementById("optionsGrid");
 const btnNext = document.getElementById("btnNext");
 
+/* ========================= */
+/* ÁUDIOS */
+/* ========================= */
+
+const btnSound = document.getElementById("btnSound");
+const audioTema = new Audio("assets/sound/tema.mp3");
+const audioPergunta = new Audio("assets/sound/pergunta.mp3");
+const audioAcerto = new Audio("assets/sound/acerto.mp3");
+const audioErro = new Audio("assets/sound/erro.mp3");
+const audioFundo = new Audio("assets/sound/somfundo.mp3");
+
 let currentPokemon = null;
 let score = 0;
 let round = 1;
 let answered = false;
 
 const MAX_POKEMON_ID = 151;
+
+/* CONFIGURAÇÕES */
+
+audioTema.loop = true;
+audioTema.volume = 0.18;
+
+audioPergunta.volume = 0.45;
+
+audioAcerto.volume = 0.4;
+
+audioErro.volume = 0.4;
+
+audioFundo.loop = true;
+audioFundo.volume = 0.12;
 
 btnStart.addEventListener("click", startGame);
 btnAnswer.addEventListener("click", handleTextAnswer);
@@ -50,6 +75,11 @@ assistMode.addEventListener("change", () => {
 });
 
 async function startGame() {
+    audioTema.pause();
+    audioTema.currentTime = 0;
+
+    //audioFundo.play().catch(() => { });
+
     startScreen.classList.add("hidden");
     gameScreen.classList.remove("hidden");
 
@@ -78,6 +108,20 @@ async function loadPokemon() {
     pokemonImage.src = "";
     pokemonImage.alt = "Silhueta do Pokémon";
     pokemonImage.className = "pokemon-img hidden-pokemon";
+    //audioPergunta.currentTime = 0;
+    //audioPergunta.play().catch(() => { });
+    audioPergunta.currentTime = 0;
+
+    audioPergunta.play().catch(() => { });
+
+    /* inicia som de fundo depois da pergunta */
+
+    audioPergunta.onended = () => {
+
+        audioFundo.currentTime = 0;
+
+        audioFundo.play().catch(() => { });
+    };
 
     try {
         const randomId = Math.floor(Math.random() * MAX_POKEMON_ID) + 1;
@@ -260,6 +304,8 @@ function shakeCard() {
 }
 
 function playSuccessEffect() {
+    audioAcerto.currentTime = 0;
+    audioAcerto.play().catch(() => { });
 
     const card = document.querySelector(".pokemon-card");
 
@@ -277,6 +323,8 @@ function playSuccessEffect() {
 }
 
 function playErrorEffect() {
+    audioErro.currentTime = 0;
+    audioErro.play().catch(() => { });
 
     const card = document.querySelector(".pokemon-card");
 
@@ -294,18 +342,42 @@ function playErrorEffect() {
 }
 
 function markSelectedOption(selectedButton, isCorrect) {
-  const buttons = document.querySelectorAll(".option-btn");
+    const buttons = document.querySelectorAll(".option-btn");
 
-  buttons.forEach((button) => {
-    const buttonName = normalizeText(button.textContent);
-    const correctName = normalizeText(currentPokemon.name);
+    buttons.forEach((button) => {
+        const buttonName = normalizeText(button.textContent);
+        const correctName = normalizeText(currentPokemon.name);
 
-    if (buttonName === correctName) {
-      button.classList.add("correct-option");
-    } else if (button === selectedButton && !isCorrect) {
-      button.classList.add("wrong-option");
-    } else {
-      button.classList.add("disabled-option");
-    }
-  });
+        if (buttonName === correctName) {
+            button.classList.add("correct-option");
+        } else if (button === selectedButton && !isCorrect) {
+            button.classList.add("wrong-option");
+        } else {
+            button.classList.add("disabled-option");
+        }
+    });
 }
+
+/* ========================= */
+/* INICIAR TEMA */
+/* ========================= */
+
+/* ========================= */
+/* ATIVAR SOM */
+/* ========================= */
+
+let soundEnabled = false;
+
+btnSound.addEventListener("click", () => {
+
+    if (soundEnabled) return;
+
+    soundEnabled = true;
+
+    audioTema.play().catch(() => { });
+
+    btnSound.textContent = "🎵 Som Ativado";
+
+    btnSound.classList.add("active-sound");
+
+});

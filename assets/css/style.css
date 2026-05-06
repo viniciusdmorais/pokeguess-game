@@ -582,3 +582,47 @@ input:focus {
   opacity: 0.45;
   filter: grayscale(0.7);
 }
+
+/* ========================= */
+/* BOTÃO SOM */
+/* ========================= */
+
+.sound-btn {
+  margin-bottom: 16px;
+  background:
+    linear-gradient(135deg, #1c3f8f, #38e8ff);
+
+  color: white;
+
+  box-shadow:
+    0 7px 0 #17456f,
+    0 0 22px rgba(56,232,255,0.35);
+
+  animation: pulseSound 2s infinite;
+}
+
+.sound-btn.active-sound {
+  background:
+    linear-gradient(135deg, #16c784, #70ff9d);
+
+  color: #06140b;
+
+  box-shadow:
+    0 7px 0 #0f8b5b,
+    0 0 22px rgba(112,255,157,0.35);
+}
+
+@keyframes pulseSound {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
