@@ -166,7 +166,7 @@ pokeguess-game/
 └── README.md
 ```
 # 🎨 Inspiração visual
-
+```
 O projeto foi inspirado em:
 
 Pokédex clássica
@@ -174,7 +174,7 @@ interfaces sci-fi
 jogos arcade
 efeitos neon
 estética anime/game
-
+```
 # 📱 Responsividade
 O PokéGuess foi desenvolvido para:
 ```
