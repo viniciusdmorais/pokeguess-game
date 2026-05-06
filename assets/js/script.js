@@ -46,10 +46,10 @@ audioPergunta.volume = 0.45;
 
 audioAcerto.volume = 0.4;
 
-audioErro.volume = 0.4;
+audioErro.volume = 0.2;
 
-audioFundo.loop = true;
-audioFundo.volume = 0.12;
+audioFundo.loop = false;
+audioFundo.volume = 0.2;
 
 btnStart.addEventListener("click", startGame);
 btnAnswer.addEventListener("click", handleTextAnswer);
