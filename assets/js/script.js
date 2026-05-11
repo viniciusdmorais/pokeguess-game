@@ -27,7 +27,12 @@ const audioPergunta = new Audio("assets/sound/pergunta.mp3");
 const audioAcerto = new Audio("assets/sound/acerto.mp3");
 const audioErro = new Audio("assets/sound/erro.mp3");
 const audioFundo = new Audio("assets/sound/somfundo.mp3");
+const gameTime = document.getElementById("gameTime");
+const timerDisplay = document.getElementById("timerDisplay");
 
+let gameTimer = null;
+let timeLeft = 0;
+let gameOver = false;
 let currentPokemon = null;
 let score = 0;
 let round = 1;
@@ -103,15 +108,19 @@ async function startGame() {
 
     score = 0;
     round = 1;
+    gameOver = false;
 
     updateScore();
-    updateRound();
+    updateRound();    
+    startGameTimer();
 
     await loadPokemon();
 }
 
 async function loadPokemon() {
     stopRoundSounds();
+
+    if (gameOver) return;
 
     answered = false;
 
@@ -284,6 +293,8 @@ function disableOptions() {
 }
 
 async function nextRound() {
+    if (gameOver) return;
+
     clearTimeout(nextRoundTimeout);
     clearInterval(nextRoundInterval);
 
@@ -448,4 +459,64 @@ function startNextRoundTimer() {
     nextRoundTimeout = setTimeout(() => {
         nextRound();
     }, 5000);
+}
+function startGameTimer() {
+    clearInterval(gameTimer);
+
+    timeLeft = Number(gameTime.value);
+
+    if (timeLeft === 0) {
+        timerDisplay.textContent = "∞";
+        return;
+    }
+
+    updateTimerDisplay();
+
+    gameTimer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+
+        if (timeLeft <= 0) {
+            finishGame();
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    timerDisplay.textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function finishGame() {
+    gameOver = true;
+
+    clearInterval(gameTimer);
+    clearTimeout(nextRoundTimeout);
+    clearInterval(nextRoundInterval);
+
+    stopRoundSounds();
+
+    pokemonImage.classList.remove("hidden-pokemon");
+    pokemonName.textContent = "Fim do desafio!";
+
+    message.innerHTML = `
+        Pontuação final: <strong>${score}</strong><br>
+        Rodadas jogadas: <strong>${round}</strong>
+    `;
+
+    message.className = "message correct";
+
+    answerInput.disabled = true;
+    btnAnswer.disabled = true;
+    optionsGrid.innerHTML = "";
+
+    btnNext.classList.remove("hidden");
+    btnNext.textContent = "Jogar novamente";
+
+    btnNext.onclick = () => {
+        location.reload();
+    };
 }

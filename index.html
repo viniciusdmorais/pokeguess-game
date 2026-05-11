@@ -63,6 +63,19 @@
                         <option value="1025">Todas — até 1025</option>
                     </select>
                 </div>
+                <div class="timer-area">
+                    <label for="gameTime">Tempo:</label>
+
+                    <select id="gameTime">
+                        <option value="0">Sem limite</option>
+                        <option value="30">30 segundos</option>
+                        <option value="60">1 minuto</option>
+                        <option value="120">2 minutos</option>
+                        <option value="180">3 minutos</option>
+                    </select>
+
+                    <span id="timerDisplay">∞</span>
+                </div>
                 <div class="pokemon-image-area">
                     <img id="pokemonImage" class="pokemon-img hidden-pokemon" src="" alt="Silhueta do Pokémon" />
                 </div>
@@ -74,7 +87,7 @@
                 </p>
 
                 <label class="assist-toggle">
-                    <input type="checkbox" id="assistMode" />
+                    <input type="checkbox" id="assistMode" checked />
                     Ativar ajuda com múltipla escolha
                 </label>
 
