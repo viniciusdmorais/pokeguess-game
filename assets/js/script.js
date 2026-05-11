@@ -224,8 +224,17 @@ async function loadPokemon() {
     pokemonImage.alt = "Silhueta do Pokémon";
     pokemonImage.className = "pokemon-img hidden-pokemon";
 
+    audioFundo.pause();
+    audioFundo.currentTime = 0;
+
+    audioPergunta.pause();
     audioPergunta.currentTime = 0;
-    audioPergunta.play().catch(() => { });
+
+    setTimeout(() => {
+        if (!gameOver && !answered) {
+            audioPergunta.play().catch(() => { });
+        }
+    }, 120);
 
     audioPergunta.onended = () => {
         if (!gameOver && !answered) {
@@ -540,7 +549,7 @@ function hideSuggestions() {
 /* ========================= */
 
 async function nextRound() {
-    if (gameOver) return;
+    if (gameOver || isLoadingRound) return;
 
     clearTimeout(nextRoundTimeout);
     clearInterval(nextRoundInterval);
