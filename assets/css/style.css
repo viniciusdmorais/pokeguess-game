@@ -884,3 +884,18 @@ input:focus {
     position: relative;
     z-index: 1;
 }
+
+.suggestion-item {
+    display: block;
+    width: 100%;
+    border: none;
+    background: rgba(5, 8, 22, 0.98);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+.suggestion-item:hover {
+    background: rgba(56, 232, 255, 0.18);
+    color: var(--yellow);
+}
