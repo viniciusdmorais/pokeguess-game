@@ -161,7 +161,7 @@ h1 {
 
 .pokemon-card {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     padding: 22px;
     border-radius: 32px;
     text-align: center;
@@ -685,4 +685,202 @@ input:focus {
     color: var(--yellow);
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.icon-btn {
+  border: 1px solid rgba(56,232,255,0.45);
+  background: rgba(5,8,22,0.75);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(56,232,255,0.15);
+}
+
+.config-panel {
+  margin-bottom: 14px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(5,8,22,0.82);
+  border: 1px solid rgba(56,232,255,0.35);
+  display: grid;
+  gap: 12px;
+}
+
+.config-group {
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+
+.config-group label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.config-group select {
+  padding: 11px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(56,232,255,0.35);
+  background: rgba(5,8,22,0.95);
+  color: var(--white);
+  font-weight: 700;
+  outline: none;
+}
+
+.end-card {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.end-card strong {
+  color: var(--yellow);
+}
+/* ========================= */
+/* AJUSTES START CONFIG */
+/* ========================= */
+
+.start-config-panel {
+    display: grid;
+    gap: 12px;
+    margin: 0 auto 20px;
+    padding: 16px;
+    border-radius: 22px;
+    background: rgba(5, 8, 22, 0.55);
+    border: 1px solid rgba(56,232,255,0.25);
+    text-align: left;
+}
+
+.setting-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.setting-check input {
+    width: auto;
+    accent-color: var(--yellow);
+    transform: scale(1.15);
+}
+
+.start-config-panel .config-group {
+    display: grid;
+    gap: 6px;
+}
+
+.start-config-panel .config-group label {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.start-config-panel .config-group select {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 999px;
+    border: 2px solid rgba(56,232,255,0.35);
+    background: rgba(5,8,22,0.95);
+    color: var(--white);
+    font-weight: 700;
+    outline: none;
+}
+
+/* ========================= */
+/* AUTOCOMPLETE */
+/* ========================= */
+
+.answer-area {
+    position: relative;
+}
+
+.suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 58px;
+    z-index: 20;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(5,8,22,0.98);
+    border: 1px solid rgba(56,232,255,0.35);
+    box-shadow: 0 0 24px rgba(56,232,255,0.18);
+}
+
+.suggestion-item {
+    padding: 12px 16px;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-align: left;
+}
+
+.suggestion-item:hover {
+    background: rgba(56,232,255,0.15);
+    color: var(--yellow);
+}
+
+/* ========================= */
+/* TELA FINAL */
+/* ========================= */
+
+.end-card {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+    color: var(--white);
+}
+
+.end-card strong {
+    color: var(--yellow);
+}
+
+@media (max-width: 520px) {
+    .start-screen {
+        max-height: 118vh;
+    }
+
+    .start-config-panel {
+        padding: 12px;
+        gap: 9px;
+    }
+
+    .suggestions {
+        top: 54px;
+    }
+}
+
+.suggestions {
+    top: 62px;
+    z-index: 999;
+    max-height: 210px;
+    overflow-y: auto;
+}
+
+.answer-area {
+    position: relative;
+    z-index: 50;
+}
+
+.pokemon-card::before {
+    z-index: 0;
+}
+
+.pokemon-card > * {
+    position: relative;
+    z-index: 1;
 }
